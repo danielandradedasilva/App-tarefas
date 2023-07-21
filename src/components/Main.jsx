@@ -1,8 +1,6 @@
-/* eslint-disable react/jsx-key */
 import  { Component }  from "react";
-
-//Form
-import {FaPlus, FaEdit, FaWindowClose} from "react-icons/fa";
+import Form from "./Form/Form.jsx";
+import Tarefas from "./Tarefas/Tarefas.jsx";
 
 //Style
 import "./Main.css";
@@ -97,28 +95,17 @@ import "./Main.css";
                 <div className="main">
                     <h1>Lista de Tarefas</h1>
                     
-                    <form onSubmit={this.handleSubmit} action="#" className="form">
-                    <input  type="text" onChange={this.handleChange} value={novaTarefa}/>
-                    <button>
-                        <FaPlus/>
-                    </button>
-                    </form>
-                    
-                    <ul className="tarefas">
-                        {tarefas.map((tarefa, index) => (
-                            <li key={tarefa}>{tarefa}
-                                <span>
-                                    <FaEdit className="edit" onClick={(e) =>{
-                                        this.handleEdit(e, index);
-                                    }}/>
-                                    <FaWindowClose className="delete" onClick={(e) =>{
-                                        this.handleDelete(e, index);
-                                    }}/>
-                                </span>
-                            </li>
-                        ))}
-                    </ul>
+                    <Form
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange}
+                        novaTarefa={novaTarefa}
+                    /> 
 
+                    <Tarefas 
+                        tarefas={tarefas}
+                        handleEdit={this.handleEdit}
+                        handleDelete={this.handleDelete}
+                    />
                 </div>
         )
     }
